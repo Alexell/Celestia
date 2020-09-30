@@ -1800,7 +1800,7 @@ void renderPoint(const Renderer &renderer,
 
     prog->use();
     prog->samplerParam("starTex") = 0;
-    prog->mat4Param("MVPMatrix") = (*m.projection) * (*m.modelview);
+    prog->MVPMatrix = (*m.projection) * (*m.modelview);
 
 #ifndef GL_ES
     glEnable(GL_POINT_SPRITE);
@@ -3669,7 +3669,7 @@ void Renderer::renderCometTail(const Body& body,
     setBlendingFactors(GL_SRC_ALPHA, GL_ONE);
 
     prog->use();
-    prog->mat4Param("MVPMatrix") = (*m.projection) * (*m.modelview) * vecgl::translate(pos);
+    prog->MVPMatrix = (*m.projection) * (*m.modelview) * vecgl::translate(pos);
 
     glEnableVertexAttribArray(CelestiaGLProgram::VertexCoordAttributeIndex);
     glEnableVertexAttribArray(CelestiaGLProgram::NormalAttributeIndex);
